@@ -91,5 +91,111 @@ fun main() {
     val f5: () -> String          // A function that accepts no arguments and returns a String
     val f6: (Int) -> (Int) -> Int // A function that accepts an Int and returns a function that accepts an Int and returns an Int
     val f7: ((Int) -> Int) -> Int // A function that accepts a function that accepts an Int and returns an Int and returns an Int
+
 }
+
+fun doubleAll(numbers: List<Int>): List<Int> {
+    // This line is the equivalent of the commented code below
+    return numbers.map { it * 2 }
+//    val result = mutableListOf<Int>()
+//    for (n in numbers) {
+//        result.add(n * 2)
+//    }
+//    return result
+}
+
+fun befuddleAll(numbers: List<Int>): List<Int> {
+    // This line is the equivalent of the commented code below
+    return numbers.map { it + 4 / (it*it) - 3 }
+//    val result = mutableListOf<Int>()
+//    for (n in numbers) {
+//        result.add(n + 4 / (n*n) - 3)
+//    }
+//    return result
+}
+
+fun squareAll(numbers: List<Int>): List<Int> {
+    // This line is the equivalent of the commented code below
+    return numbers.map { it * it }
+//    val result = mutableListOf<Int>()
+//    for (n in numbers) {
+//        result.add(n * n)
+//    }
+//    return result
+}
+
+fun removeVowels(s: String): String {
+    // This line is the equivalent of the commented code below
+    return s.filter { it !in "aeiouAEIOU" }
+//    var result = ""
+//    for (c in s) {
+//        if (c !in "aeiouAEIOU") {
+//            result += c
+//        }
+//    }
+//    return result
+}
+
+fun removeNumbers(s: String): String {
+    // This line is the equivalent of the commented code below
+    return s.filter { it !in "0123456789"  }
+//    var result = ""
+//    for (c in s) {
+//        if (c !in "0123456789") {
+//            result += c
+//        }
+//    }
+//    return result
+}
+
+fun removeStuffOverE(s: String): String {
+    // This line is the equivalent of the commented code below
+    return s.filter { it <= 'e' }
+//    var result = ""
+//    for (c in s) {
+//        if (c <= 'e') {
+//            result += c
+//        }
+//    }
+//    return result
+}
+
+fun countVowels(s: String): Int {
+    // This line is the equivalent of the commented code below
+    return s.fold(0) { total, c -> if (c in "aeiouAEIOU") total + 1 else total }
+//    var result = 0
+//    for (c in s) {
+//        if (c in "aeiouAEIOU") {
+//            result += 1
+//        }
+//    }
+//    return result
+}
+
+fun countNumbers(s: String): Int {
+    // This line is the equivalent of the commented code below
+    return s.fold(0) { total, c -> if (c in "0123456789") total + 1 else total }
+//    var result = 0
+//    for (c in s) {
+//        if (c in "0123456789") {
+//            result += 1
+//        }
+//    }
+//    return result
+}
+
+fun countStuffOverE(s: String): Int {
+    // This line is the equivalent of the commented code below
+    return s.fold(0) { total, c -> if (c > 'e') total + 1 else total }
+//    var result = 0
+//    for (c in s) {
+//        if (c > 'e') {
+//            result += 1
+//        }
+//    }
+//    return result
+}
+
+
+
 

@@ -13,7 +13,18 @@ val m = ::multiplyByTwo  // A function reference
 val isEmpty = String::isEmpty  // A reference to the isEmpty() method of the String class
 
 
+fun hof(f: () -> Unit) {
+    f()
+}
 
 fun main() {
+    var x = 2
+
+    hof { println(x) }
+
+    x = 3
+
+    hof { println(x) }
+
 }
 

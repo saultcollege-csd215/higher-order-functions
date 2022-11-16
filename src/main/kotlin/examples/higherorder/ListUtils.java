@@ -19,6 +19,23 @@ public class ListUtils {
         // This 'looks like' passing a function reference to a function (but it's not really)
         list.forEach(System.out::println);
 
+        // Our withCopy function can also be used to make sequential list operations more efficient
+        // Consider the following code.  Each operation involves a copy-on-write:
+        list = dropLast(list);
+        list = push(list, "four");
+        list = push(list, "five");
+        list = set(list, 1, "two and a half");
+
+        // Instead, we can do this:
+        list = withCopy(list, newList -> {
+            // This lambda expression performs all the operations on the copy
+            // without need to copy the whole list for each operation
+            newList.remove(newList.size() - 1);
+            newList.add("four");
+            newList.add("five");
+            newList.set(1, "two and a half");
+        });
+
     }
 
     // By encapsulating the copy-on-write pattern for lists in this function, we can avoid code duplication
@@ -39,7 +56,7 @@ public class ListUtils {
     }
 
     public static <T> List<T> dropLast(List<T> list) {
-        return withCopy(list, newList -> newList.remove(list.size() - 1));
+        return withCopy(list, newList -> newList.remove(newList.size() - 1));
     }
 
     public static <T> List<T> dropFirst(List<T> list) {
