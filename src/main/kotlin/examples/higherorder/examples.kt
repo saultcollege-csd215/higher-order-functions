@@ -72,8 +72,8 @@ fun main() {
     var strPlus = String::plus  // A reference to a class method
     var objPlus = "abc"::plus   // A reference to an object method
 
-    "abcdef".forEach(::println)         // Prints each letter on its own line
-    listOf(1, 2, 3).forEach(::println)  // Prints each number on its own line
+//    "abcdef".forEach(::println)         // Prints each letter on its own line
+//    listOf(1, 2, 3).forEach(::println)  // Prints each number on its own line
 
     // Basic types
     val a: Int
@@ -92,6 +92,8 @@ fun main() {
     val f6: (Int) -> (Int) -> Int // A function that accepts an Int and returns a function that accepts an Int and returns an Int
     val f7: ((Int) -> Int) -> Int // A function that accepts a function that accepts an Int and returns an Int and returns an Int
 
+
+    println(countStuffOverE("abcdefg"))
 }
 
 fun doubleAll(numbers: List<Int>): List<Int> {
@@ -187,6 +189,10 @@ fun countNumbers(s: String): Int {
 fun countStuffOverE(s: String): Int {
     // This line is the equivalent of the commented code below
     return s.fold(0) { total, c -> if (c > 'e') total + 1 else total }
+
+//    return foldStuff(s, 0) {
+//        total, c -> if (c > 'e') total + 1 else total
+//    }
 //    var result = 0
 //    for (c in s) {
 //        if (c > 'e') {
@@ -196,6 +202,20 @@ fun countStuffOverE(s: String): Int {
 //    return result
 }
 
+// This is map in terms of fold
+fun map(s: String, f: (Char) -> Char): String {
+    return s.fold("") { result, c -> result + f(c) }
+}
 
+// This is filter in terms of fold
+fun filter(s: String, f: (Char) -> Boolean): String {
+    return s.fold("") { result, c -> if (f(c)) result + c else result }
+}
 
-
+//fun foldStuff(s: String, initial: Int, f: (Int, Char) -> Int): Int {
+//    var result = initial
+//    for (c in s) {
+//        result = f(result, c)
+//    }
+//    return result
+//}

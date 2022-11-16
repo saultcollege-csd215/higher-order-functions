@@ -33,6 +33,7 @@ fun main() {
         Person("Bob", listOf(4, 5, 6)),
         Person("Carol", listOf(7, 8, 9))
     )
+    val alice = people.find { it.name == "Alice" }  // Person(name=Alice, luckyNumbers=[1, 2, 3])
     val allLuckyNumbers = people.flatMap { it.luckyNumbers } // [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
     // Chained examples
